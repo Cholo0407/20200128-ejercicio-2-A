@@ -49,7 +49,7 @@ const Welcome = () => {
               ¿Listo para comenzar?
             </h3>
             <p className="text-gray-600 mb-8">
-              Accede al dashboard y comienza a gestionar tus cursos para tu proyecto del instituto
+              Accede al dashboard y comienza a gestionar tus cursos en linea
             </p>
             
             <div className="flex justify-center">
