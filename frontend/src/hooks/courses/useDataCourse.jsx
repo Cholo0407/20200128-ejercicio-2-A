@@ -5,7 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import useFetchCourses from "./useFetchCourses"; 
 
 const useDataCourse = (methods) => {
-  const { getCourses } = useFetchCourses();
+  const { getCourses, getCourseById } = useFetchCourses(); // ✅ Agregamos getCourseById
   const { id } = useParams();
 
   const {
@@ -20,7 +20,7 @@ const useDataCourse = (methods) => {
   // Guardar un nuevo curso
   const saveCourseForm = async (dataForm) => {
     try {
-      const response = await fetch(url, {  // Usa la URL importada aquí
+      const response = await fetch(url, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -46,7 +46,7 @@ const useDataCourse = (methods) => {
   // Editar un curso
   const editCourse = async (dataForm) => {
     try {
-      const response = await fetch(`${url}/${id}`, {  // Usa la URL importada aquí
+      const response = await fetch(`${url}/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -79,30 +79,39 @@ const useDataCourse = (methods) => {
     }
   };
 
+  // ✅ CORREGIR: Usar getCourseById en lugar de getCourses
   const loadCourse = async () => {
     if (id) {
-      const course = await getCourses(id);
-      if (course) {
-        reset({
-          curso: course?.curso,
-          tematica: course?.tematica,
-          instructor: course?.instructor,
-          descripcion: course?.descripcion,
-        });
+      try {
+        const course = await getCourseById(id); // ✅ Cambio principal aquí
+        if (course) {
+          reset({
+            curso: course?.curso || "",
+            tematica: course?.tematica || "",
+            instructor: course?.instructor || "",
+            descripcion: course?.descripcion || "",
+          });
+        }
+      } catch (error) {
+        console.error("Error al cargar el curso:", error);
+        toast.error("Error al cargar los datos del curso");
       }
     }
   };
 
   useEffect(() => {
-    loadCourse();
+    if (id) { // ✅ Solo cargar si hay ID
+      loadCourse();
+    }
   }, [id]);
 
   return {
     register,
-    handleSubmit: handleSubmit(handleCourseAction),
+    handleSubmit,
     errors,
     getCourses,
     loadCourse,
+    saveCourseForm: handleCourseAction,
   };
 };
 
