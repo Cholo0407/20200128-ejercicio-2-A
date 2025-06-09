@@ -54,7 +54,6 @@ const Home = () => {
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-6xl mx-auto px-6 py-12">
         
-        {/* Header con botón de agregar */}
         <div className="mb-8 flex justify-between items-center">
           <div>
             <Tittle titulo="Gestión de Cursos" className="text-3xl font-semibold text-gray-900" />
@@ -73,10 +72,8 @@ const Home = () => {
           />
         </div>
 
-        {/* Contenedor principal */}
         <div className="bg-white rounded-lg shadow-sm border border-gray-200">
           
-          {/* Tabla */}
           <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-gray-200">
               <thead className="bg-gray-50">

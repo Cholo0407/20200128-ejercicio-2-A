@@ -15,13 +15,10 @@ const Welcome = () => {
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-4xl mx-auto px-6 py-12">
         
-        {/* Contenedor principal */}
         <div className="text-center">
           
-          {/* Hero Section */}
           <div className="mb-12">
             
-            {/* Icono principal */}
             <div className="mb-8">
               <div className="inline-flex items-center justify-center w-20 h-20 bg-blue-100 rounded-full mb-6">
                 <svg className="w-10 h-10 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -30,20 +27,17 @@ const Welcome = () => {
               </div>
             </div>
 
-            {/* Título principal */}
             <Titulo 
               titulo="Bienvenido a Course Manager" 
               className="text-4xl md:text-5xl font-bold text-gray-900 mb-6" 
             />
             
-            {/* Subtítulo */}
             <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
               La plataforma completa para gestionar y organizar todos tus cursos de manera eficiente y profesional
             </p>
 
           </div>
 
-          {/* Botones de acción */}
           <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
             <h3 className="text-2xl font-semibold text-gray-900 mb-4">
               ¿Listo para comenzar?

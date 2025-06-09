@@ -5,7 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import useFetchCourses from "./useFetchCourses"; 
 
 const useDataCourse = (methods) => {
-  const { getCourses, getCourseById } = useFetchCourses(); // ✅ Agregamos getCourseById
+  const { getCourses, getCourseById } = useFetchCourses();
   const { id } = useParams();
 
   const {
@@ -70,7 +70,6 @@ const useDataCourse = (methods) => {
     }
   };
 
-  // Función para manejar el formulario de creación o edición
   const handleCourseAction = (dataForm) => {
     if (id) {
       editCourse(dataForm);
@@ -79,11 +78,10 @@ const useDataCourse = (methods) => {
     }
   };
 
-  // ✅ CORREGIR: Usar getCourseById en lugar de getCourses
   const loadCourse = async () => {
     if (id) {
       try {
-        const course = await getCourseById(id); // ✅ Cambio principal aquí
+        const course = await getCourseById(id); 
         if (course) {
           reset({
             curso: course?.curso || "",
@@ -100,7 +98,7 @@ const useDataCourse = (methods) => {
   };
 
   useEffect(() => {
-    if (id) { // ✅ Solo cargar si hay ID
+    if (id) {
       loadCourse();
     }
   }, [id]);

@@ -4,7 +4,7 @@ import { toast } from "react-hot-toast";
 
 const useFetchCourses = () => {
   const [cursos, setCursos] = useState([]);
-  const isMounted = useRef(true); // Mantiene una referencia para saber si el componente está montado
+  const isMounted = useRef(true); 
 
   const getCourses = async () => {
     try {
@@ -13,7 +13,7 @@ const useFetchCourses = () => {
         throw new Error("Error al obtener los cursos");
       }
       const data = await response.json();
-      if (isMounted.current) {  // Solo actualiza el estado si el componente sigue montado
+      if (isMounted.current) {  
         setCursos(data);
       }
     } catch (error) {
@@ -38,14 +38,13 @@ const useFetchCourses = () => {
   };
 
   useEffect(() => {
-    isMounted.current = true;  // El componente se monta
+    isMounted.current = true;  
     getCourses();
 
-    // Cleanup function para marcar cuando el componente se desmonte
     return () => {
-      isMounted.current = false;  // El componente se desmonta
+      isMounted.current = false;  
     };
-  }, []); // Solo se ejecuta una vez cuando el componente se monta
+  }, []);
 
   return {
     cursos,
