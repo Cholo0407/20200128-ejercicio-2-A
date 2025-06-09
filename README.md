@@ -17,6 +17,12 @@ Permite administrar los cursos en línea de forma eficiente.
 
 ---
 
+## Video con funciones
+
+📡 [https://youtu.be/fteFRVFw9gk](https://youtu.be/fteFRVFw9gk)
+
+---
+
 ## Tecnologías Utilizadas
 
 - React.js  
